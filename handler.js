@@ -26,6 +26,7 @@ np.array((popt, perr))
 
 pyodide.runPythonAsync(code)
   .then(output => {
+    console.log(output);
     const popt = output[0];
     const perr = output[1];
     let data = [];
