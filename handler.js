@@ -1,4 +1,4 @@
-async function submit() {
+function submit() {
 let input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
