@@ -24,8 +24,14 @@ print(popt, perr)
 np.array((popt, perr))
 `
 
-await languagePluginLoader.then(() => { console.log('Ready') })
-
 pyodide.runPythonAsync(code)
-  .then(output => result.innerText = output.join(' '));
+  .then(output => {
+    const popt = output[0];
+    const perr = output[1];
+    let data = [];
+    for(let i = 0; i < popt.length; ++i) {
+      data.push(`${String.fromCharCode(41+i)}: ${popt[i]}±${perr[i]}`)
+    }
+    result.innerText = data.join(', ')
+  });
 }

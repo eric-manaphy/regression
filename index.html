@@ -16,13 +16,13 @@
     window.languagePluginUrl = 'https://pyodide-cdn2.iodide.io/v0.15.0/full/';
   </script>
   <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+  <script src="preload.js"></script>
   <script src="handler.js"></script>
-
 </head>
 
 <body>
   <textarea id="input" type="text"></textarea>
-  <button onclick="submit()">Submit</button>
+  <button id="submit" onclick="submit()" disabled>Loading...</button>
   <div id="result">
   </div>
 </body>
