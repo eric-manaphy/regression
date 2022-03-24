@@ -24,18 +24,18 @@ print(popt, perr)
 np.array((popt, perr))
 `
 
-await pyodide.runPythonAsync(code)
+pyodide.runPythonAsync(code)
   .then(output => {
     console.log(output);
-    const popt = output[0];
-    const perr = output[1];
-    let data = [];
-    for(let i = 0; i < popt.length; ++i) {
-      if(perr[i] === Infinity) 
-        data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}`)
-      else
-        data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}±${perr[i]}`)
-    }
-    result.innerText = data.join(', ')
+    // const popt = output[0];
+    // const perr = output[1];
+    // let data = [];
+    // for(let i = 0; i < popt.length; ++i) {
+    //   if(perr[i] === Infinity) 
+    //     data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}`)
+    //   else
+    //     data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}±${perr[i]}`)
+    // }
+    // result.innerText = data.join(', ')
   });
 }
