@@ -21,10 +21,11 @@ p0 = 8., 2.
 popt, pcov = curve_fit(simple, (A,B), z, p0)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
+np.array((popt, perr))
 `
 
 await languagePluginLoader.then(() => { console.log('Ready') })
 
 pyodide.runPythonAsync(code)
-  .then(output => result.innerText = output);
+  .then(output => result.innerText = output.join(' '));
 }
