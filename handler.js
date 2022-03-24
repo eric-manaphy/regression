@@ -1,4 +1,4 @@
-function submit() {
+async function submit() {
 let input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
@@ -23,8 +23,8 @@ perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 `
 
-languagePluginLoader.then(() => { console.log('Ready') })
+await languagePluginLoader.then(() => { console.log('Ready') })
 
 pyodide.runPythonAsync(code)
-  .then(output => result.value = output);
+  .then(output => result.innerText = output);
 }
