@@ -12,10 +12,20 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+  <script type="text/javascript">
+    window.languagePluginUrl = 'https://pyodide-cdn2.iodide.io/v0.15.0/full/';
+  </script>
+  <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+  <script src="/handler.js"></script>
 
 </head>
 
 <body>
-  <!-- your content here... -->
+  <form onsubmit="submit()">
+    <textarea id="input" type="text">
+    <input type="submit">
+  </form>
+  <div id="result">
+  </div>
 </body>
 </html>
