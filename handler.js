@@ -1,4 +1,4 @@
-async function submit() {
+function submit() {
 let input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
@@ -24,17 +24,15 @@ print(popt, perr)
 np.array([popt, perr])
 `
 
-pyodide.runPythonAsync(code)
-  .then(output => {
-    const popt = output[0];
-    const perr = output[1];
-    let data = [];
-    for(let i = 0; i < popt.length; ++i) {
-      if(perr[i] === Infinity) 
-        data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}`)
-      else
-        data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}±${perr[i]}`)
-    }
-    result.innerText = data.join(', ')
-  });
+const output = pyodide.runPython(code)
+const popt = output[0];
+const perr = output[1];
+let data = [];
+for(let i = 0; i < popt.length; ++i) {
+  if(perr[i] === Infinity) 
+    data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}`)
+  else
+    data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}±${perr[i]}`)
+}
+result.innerText = data.join(', ')
 }
