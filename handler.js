@@ -25,6 +25,6 @@ print(popt, perr)
 
 languagePluginLoader.then(() => { console.log('Ready') })
 
-pyodide.runPythonAsync(python_code)
+pyodide.runPythonAsync(code)
   .then(output => result.value = output);
 }
