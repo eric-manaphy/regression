@@ -1,4 +1,5 @@
-function submit() {
+function submit(event) {
+event.preventDefault();
 let input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
