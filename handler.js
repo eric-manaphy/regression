@@ -61,7 +61,7 @@ perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])
 `
-console.log("test1");
+
 const output = pyodide.runPython(code)
 console.log(output);
 const popt = output[0];
