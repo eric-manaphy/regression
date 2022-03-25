@@ -1,6 +1,7 @@
 async function load() {
     await languagePluginLoader.then(() => { console.log('Ready') });
     await pyodide.loadPackage(["numpy", "scipy"]);
-    document.getElementsByTagName("button").forEach(e => e.disabled = false);
+    for(let button of document.getElementsByTagName("button"))
+        button.disabled = false;
 }
 load();
