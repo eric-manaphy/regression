@@ -34,7 +34,7 @@ def ordered_bi_bi(X, KA, KiA, KB, Vmax):
 A = np.array(${input_arr[0]})
 B = np.array(${input_arr[1]})
 z = np.array(${input_arr[2]})
-
+print(A,B,z)
 popt, pcov = curve_fit(${type}, (A,B), z)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
