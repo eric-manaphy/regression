@@ -1,3 +1,12 @@
+const curves = {
+  uni_uni: ["KA", "Vmax"],
+  uni_uni_comp_inhib: ["KA", "KI", "Vmax"],
+  ping_pong_bi_bi: ["KA", "KB", "Vmax"],
+  ordered_bi_bi: ["KA", "KiA", "KB", "Vmax"],
+  ordered_ter_ter: ["KA", "KiA", "KB", "KiB", "KC", "Vmax"],
+  bi_uni_uni_uni_ping_pong: ["KA", "KIA", "KB", "KC", "Vmax"],
+};
+
 function submit(type) {
 let input = document.getElementById('input').value;
 let result = document.getElementById('result');
@@ -20,6 +29,14 @@ def simple(X, a, b):
     A, B = X
     return a*A + b*B
 
+def uni_uni(X, KA, Vmax):
+    A = X
+    return (Vmax*A)/(KA+A)
+
+def uni_uni_comp_inhib(X, KA, KI, Vmax):
+    A = X
+    return (Vmax*A)/((1+1/KI)*KA+A)
+
 def ping_pong_bi_bi(X, KA, KB, Vmax):
     A, B = X
     return (Vmax*A*B)/(KA*B+KB*A+A*B)
@@ -27,6 +44,14 @@ def ping_pong_bi_bi(X, KA, KB, Vmax):
 def ordered_bi_bi(X, KA, KiA, KB, Vmax):
     A, B = X
     return (Vmax*A*B)/(KiA*KB+KA*B+KB*A+A*B)
+
+def ordered_ter_ter(X, KA, KiA, KB, KiB, KC, Vmax):
+    A, B, C = X
+    return (Vmax*A*B*C)/(KiA*KiB*KC+KiA*KB*C+KiB*KC*A+KC*A*B+KB*A*C+KA*B*C+A*B*C)
+
+def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
+    A, B, C = X
+    return (Vmax*A*B*C)/(KIA*KB*C+KC*A*B+KB*A*C+KA*B*C+A*B*C)
 
 A = np.array([${input_arr[0].join(',')}])
 B = np.array([${input_arr[1].join(',')}])
@@ -40,12 +65,14 @@ np.array([popt, perr])
 const output = pyodide.runPython(code)
 const popt = output[0];
 const perr = output[1];
-let data = [];
+const curve = curves[type];
+result.innerHTML = '';
 for(let i = 0; i < popt.length; ++i) {
-  if(perr[i] === Infinity) 
-    data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}`)
-  else
-    data.push(`${String.fromCharCode(0x41+i)}: ${popt[i]}±${perr[i]}`)
+  let p = document.createElement('p');
+  let text = perr[i] === Infinity ?
+    document.createTextNode(`${curve[i]}: ${popt[i]}`) :
+    document.createTextNode(`${curve[i]}: ${popt[i]}±${perr[i]}`);
+  p.appendChild(text);
+  result.appendChild(text);
 }
-result.innerText = data.join(', ')
 }
