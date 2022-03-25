@@ -72,7 +72,7 @@ for(let i = 0; i < popt.length; ++i) {
   let p = document.createElement('p');
   let text = '';
   if(perr[i] === Infinity)
-    document.createTextNode(`${curve[i]}: ${popt[i]}`);
+    text = document.createTextNode(`${curve[i]}: ${popt[i]}`);
   else {
     let precision = Math.ceil(-Math.log10(perr[i]))
     let num = precision > 0 ? 
@@ -81,7 +81,7 @@ for(let i = 0; i < popt.length; ++i) {
     let err = precision > 0 ? 
       perr[i].toFixed(precision) :
       perr[i].toPrecision(precision);
-    document.createTextNode(`${curve[i]}: ${num}±${err}`);
+    text = document.createTextNode(`${curve[i]}: ${num}±${err}`);
   }
   p.appendChild(text);
   result.appendChild(p);
