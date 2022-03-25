@@ -12,9 +12,6 @@ for(let i = 1; i < processed_input.length; ++i) {
   }
 }
 
-console.log(input_arr);
-console.log(type);
-
 const code = `
 import numpy as np
 from scipy.optimize import curve_fit
@@ -34,7 +31,6 @@ def ordered_bi_bi(X, KA, KiA, KB, Vmax):
 A = np.array([${input_arr[0].join(',')}])
 B = np.array([${input_arr[1].join(',')}])
 z = np.array([${input_arr[2].join(',')}])
-print(A,B,z)
 popt, pcov = curve_fit(${type}, (A,B), z)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
