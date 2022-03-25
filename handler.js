@@ -75,16 +75,10 @@ for(let i = 0; i < popt.length; ++i) {
     text = document.createTextNode(`${curve[i]}: ${popt[i]}`);
   else {
     let precision = Math.ceil(-Math.log10(perr[i]))
-    let num = precision > 0 ? 
-      popt[i].toFixed(precision) :
-      popt[i].toPrecision(precision);
-    let err = precision > 0 ? 
-      perr[i].toFixed(precision) :
-      perr[i].toPrecision(precision);
-    // if(precision > 5) {
-    //   num = popt[i].toExponential();
-    //   err = perr[i].toExponential();
-    // }
+    let sigfigs = precision - Math.ceil(-Math.log10(popt[i]));
+    let num = popt[i].toPrecision(sigfigs + 1);
+    let err = perr[i].toPrecision(1) === "1" ?
+      perr[i].toPrecision(2) : perr[i].toPrecision(1);
     text = document.createTextNode(`${curve[i]}: ${num}±${err}`);
   }
   p.appendChild(text);
