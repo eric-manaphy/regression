@@ -1,8 +1,14 @@
-function submit() {
+function submit(type) {
 let input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
-const input_arr = input.split("\n");
+// idk if there's a more efficient way
+const processed_input = input.split('\n').map((line) => line.split('\t'));
+let input_arr = new Array(processed_input[0].length);
+for(let arr of input_arr) arr = [];
+for(let i = 1; i < processed_input.length; ++i) {
+  for(const x of processed_input[i]) input_arr[i].push(x);
+}
 
 const code = `
 import numpy as np
@@ -12,13 +18,19 @@ def simple(X, a, b):
     A, B = X
     return a*A + b*B
 
+def ping_pong_bi_bi(X, KA, KB, Vmax):
+    A, B = X
+    return (Vmax*A*B)/(KA*B+KB*A+A*B)
+
+def ordered_bi_bi(X, KA, KiA, KB, Vmax):
+    A, B = X
+    return (Vmax*A*B)/(KiA*KB+KA*B+KB*A+A*B)
+
 A = np.array(${input_arr[0]})
 B = np.array(${input_arr[1]})
-a, b = 10., 4.
 z = np.array(${input_arr[2]})
 
-p0 = 8., 2.
-popt, pcov = curve_fit(simple, (A,B), z, p0)
+popt, pcov = curve_fit(${type}, (A,B), z)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])
