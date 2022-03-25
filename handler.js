@@ -5,9 +5,11 @@ let result = document.getElementById('result');
 // idk if there's a more efficient way
 const processed_input = input.split('\n').map((line) => line.split('\t'));
 let input_arr = new Array(processed_input[0].length);
-for(let arr of input_arr) arr = [];
 for(let i = 1; i < processed_input.length; ++i) {
-  for(const x of processed_input[i]) input_arr[i].push(x);
+  for(const x of processed_input[i]) {
+    if(input_arr[i] === undefined) input_arr[i] = [];
+    input_arr[i].push(x);
+  }
 }
 
 const code = `
