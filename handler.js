@@ -61,8 +61,9 @@ perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])
 `
-
+console.log("test1");
 const output = pyodide.runPython(code)
+console.log(output);
 const popt = output[0];
 const perr = output[1];
 const curve = curves[type];
@@ -73,6 +74,6 @@ for(let i = 0; i < popt.length; ++i) {
     document.createTextNode(`${curve[i]}: ${popt[i]}`) :
     document.createTextNode(`${curve[i]}: ${popt[i]}±${perr[i]}`);
   p.appendChild(text);
-  result.appendChild(text);
+  result.appendChild(p);
 }
 }
