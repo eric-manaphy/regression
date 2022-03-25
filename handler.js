@@ -70,9 +70,19 @@ const curve = curves[type];
 result.innerHTML = '';
 for(let i = 0; i < popt.length; ++i) {
   let p = document.createElement('p');
-  let text = perr[i] === Infinity ?
-    document.createTextNode(`${curve[i]}: ${popt[i]}`) :
-    document.createTextNode(`${curve[i]}: ${popt[i]}±${perr[i]}`);
+  let text = '';
+  if(perr[i] === Infinity)
+    document.createTextNode(`${curve[i]}: ${popt[i]}`);
+  else {
+    let precision = Math.ceil(-Math.log10(perr[i]))
+    let num = precision > 0 ? 
+    popt[i].toFixed(precision) :
+    popt[i].toPrecision(precision);
+    let err = precision > 0 ? 
+      perr[i].toFixed(precision) :
+      perr[i].toPrecision(precision);
+    document.createTextNode(`${curve[i]}: ${num}±${err}`);
+  }
   p.appendChild(text);
   result.appendChild(p);
 }
