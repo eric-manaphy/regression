@@ -12,6 +12,9 @@ for(let i = 1; i < processed_input.length; ++i) {
   }
 }
 
+console.log(input_arr);
+console.log(type);
+
 const code = `
 import numpy as np
 from scipy.optimize import curve_fit
