@@ -82,8 +82,8 @@ for(let i = 0; i < popt.length; ++i) {
       perr[i].toFixed(precision) :
       perr[i].toPrecision(precision);
     if(precision > 5) {
-      popt[i].toExponential();
-      perr[i].toExponential();
+      num = popt[i].toExponential();
+      err = perr[i].toExponential();
     }
     text = document.createTextNode(`${curve[i]}: ${num}±${err}`);
   }
