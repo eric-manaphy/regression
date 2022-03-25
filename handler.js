@@ -76,7 +76,8 @@ for(let i = 0; i < popt.length; ++i) {
   else {
     let precision = Math.ceil(-Math.log10(perr[i]))
     let sigfigs = precision - Math.ceil(-Math.log10(popt[i]));
-    let num = popt[i].toPrecision(sigfigs + 1);
+    let num = sigfigs > -1 ?
+      popt[i].toPrecision(sigfigs + 1) : 0;
     let err = perr[i].toPrecision(1) === "1" ?
       perr[i].toPrecision(2) : perr[i].toPrecision(1);
     text = document.createTextNode(`${curve[i]}: ${num}±${err}`);
