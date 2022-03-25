@@ -6,9 +6,9 @@ let result = document.getElementById('result');
 const processed_input = input.split('\n').map((line) => line.split('\t'));
 let input_arr = new Array(processed_input[0].length);
 for(let i = 1; i < processed_input.length; ++i) {
-  for(const x of processed_input[i]) {
-    if(input_arr[i] === undefined) input_arr[i] = [];
-    input_arr[i].push(x);
+  for(let j = 0; j < processed_input[i].length; ++j) {
+    if(input_arr[j] === undefined) input_arr[j] = [];
+    input_arr[j].push(processed_input[i][j]);
   }
 }
 
