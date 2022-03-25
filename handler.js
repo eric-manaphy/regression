@@ -76,11 +76,15 @@ for(let i = 0; i < popt.length; ++i) {
   else {
     let precision = Math.ceil(-Math.log10(perr[i]))
     let num = precision > 0 ? 
-    popt[i].toFixed(precision) :
-    popt[i].toPrecision(precision);
+      popt[i].toFixed(precision) :
+      popt[i].toPrecision(precision);
     let err = precision > 0 ? 
       perr[i].toFixed(precision) :
       perr[i].toPrecision(precision);
+    if(precision > 5) {
+      popt[i].toExponential();
+      perr[i].toExponential();
+    }
     text = document.createTextNode(`${curve[i]}: ${num}±${err}`);
   }
   p.appendChild(text);
