@@ -10,6 +10,14 @@ def plusconstant(X, a, b, c):
     A, B = X
     return a*A + b*B + c
 
+def ping_pong_bi_bi(X, KA, KB, Vmax):
+    A, B = X
+    return (Vmax*A*B)/(KA*B+KB*A+A*B)
+
+def ordered_bi_bi(X, KA, KiA, KB, Vmax):
+    A, B = X
+    return (Vmax*A*B)/(KiA*KB+KA*B+KB*A+A*B)
+
 A = np.linspace(0.1,1.1,101)
 B = np.linspace(1.,2., 101)
 a, b, c = 10., 4., 6.
