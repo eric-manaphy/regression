@@ -27,12 +27,17 @@ function validate() {
       message.innerText = "There doesn't seem to be enough columns.";
       return;
   }
+  const length = processed_input[0].length;
   for(let i = 1; i < processed_input.length; ++i) {
     for(let j = 0; j < processed_input[i].length; ++j) {
-    if(!isNumber(processed_input[i][j])) {
-      message.innerText = "A data value seems to be formatted improperly.";
-      return;
-    }
+        if(!isNumber(processed_input[i][j])) {
+            message.innerText = "A data value seems to be formatted improperly.";
+            return;
+        }
+        if(processed_input[i].length !== length) {
+            message.innerText = "There seems to be a missing data value."
+            return;
+        }
     }
   }
 
