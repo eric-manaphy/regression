@@ -46,11 +46,11 @@ function validate() {
   let button = document.createElement('button');
   button.id = 'validate';
   button.setAttribute('onclick','validate()');
-  button.innerText = 'Validate';
+  button.innerText = 'Re-validate';
   message.appendChild(button);
   let linebreak = document.createElement('br');
   message.appendChild(linebreak);
-  
+
   for(const model of models[model_idx]) {
     button = document.createElement('button');
     let image = document.createElement('img');
