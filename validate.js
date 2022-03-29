@@ -12,17 +12,21 @@ function validate() {
   const input = document.getElementById('input').value.trim();
   let message = document.getElementById('button-field'); // error box
   if(input.indexOf('\t') < -1) {
-    message.innerText = "The input doesn't seem to be TSV";
+    message.innerText = "The input doesn't seem to be TSV.";
     return;
   }
   const num_tabs = (input.match(/\t/g) || []).length;
   const num_br = (input.match(/\n/g) || []).length;
   if(!num_tabs || !num_br || num_tabs % (num_br + 1) !== 0) {
-    message.innerText = "The whitespace seems to be off";
+    message.innerText = "The whitespace seems to be off.";
     return;
   }
 
   const processed_input = input.split('\n').map((line) => line.split('\t'));
+  if(processed_input[0].length < 2) {
+      message.innerText = "There doesn't seem to be enough columns.";
+      return;
+  }
   for(let i = 1; i < processed_input.length; ++i) {
     for(let j = 0; j < processed_input[i].length; ++j) {
     if(!isNumber(processed_input[i][j])) {
@@ -32,7 +36,7 @@ function validate() {
     }
   }
 
-  const model_idx = processed_input[i].length - 2;
+  const model_idx = processed_input[0].length - 2;
   message.innerHTML = '';
   let button = document.createElement('button');
   button.id = 'validate';
