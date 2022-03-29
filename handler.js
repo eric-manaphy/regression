@@ -22,8 +22,8 @@ for(let i = 1; i < processed_input.length; ++i) {
 }
 
 const code = `
-#import numpy as numpy
-#from scipy.optimize import curve_fit
+import numpy as np
+from scipy.optimize import curve_fit
 
 def simple(X, a, b):
     A, B = X
@@ -53,13 +53,13 @@ def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
     A, B, C = X
     return (Vmax*A*B*C)/(KIA*KB*C+KC*A*B+KB*A*C+KA*B*C+A*B*C)
 
-A = numpy.array([${input_arr[0].join(',')}])
-B = numpy.array([${input_arr[1].join(',')}])
-z = numpy.array([${input_arr[2].join(',')}])
-popt, pcov = scipy.optimize.curve_fit(${type}, (A,B), z)
-perr = numpy.sqrt(numpy.diag(pcov))
+A = np.array([${input_arr[0].join(',')}])
+B = np.array([${input_arr[1].join(',')}])
+z = np.array([${input_arr[2].join(',')}])
+popt, pcov = curve_fit(${type}, (A,B), z)
+perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
-numpy.array([popt, perr])
+np.array([popt, perr])
 `
 
 const output = pyodide.runPython(code)
