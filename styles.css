@@ -8,7 +8,21 @@ div.title {
 
 div.content {
     height: 90%;
+}
+
+div#button-field {
     text-align: center;
+}
+
+div#result {
+    margin: 2px;
+    padding: 2px;
+    border: solid black;
+    border-radius: 5px;
+}
+
+div#result > p {
+    font-size: 15px;
 }
 
 div.display {
