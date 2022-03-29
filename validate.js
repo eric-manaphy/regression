@@ -48,8 +48,9 @@ function validate() {
   button.setAttribute('onclick','validate()');
   button.innerText = 'Re-validate';
   message.appendChild(button);
-  let linebreak = document.createElement('br');
-  message.appendChild(linebreak);
+
+  message.appendChild(document.createElement('br'));
+  message.appendChild(document.createElement('br'));
 
   for(const model of models[model_idx]) {
     button = document.createElement('button');
@@ -62,7 +63,7 @@ function validate() {
     button.appendChild(image);
     message.appendChild(button);
 
-    linebreak = document.createElement('br');
-    message.appendChild(linebreak);
+    message.appendChild(document.createElement('br'));
+    message.appendChild(document.createElement('br'));
   }
 }
