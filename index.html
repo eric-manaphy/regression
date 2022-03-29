@@ -17,6 +17,7 @@
   </script>
   <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
   <script src="validate.js"></script>
+  <script src="reset.js"></script>
   <script src="preload.js"></script>
   <script src="handler.js"></script>
 </head>
@@ -50,24 +51,19 @@
     <h1>How to use this tool</h1>
     <ul>
       <li>
-        Wait for the tool to load. It takes a little bit
-        when you first load the site and when you first select
-        an option, but subsequent regressions should be
-        instantaneous as long as you do not leave the site.
-        If it doesn't work the first time, click it again.
-        If it doesn't work after that, refresh and then try again.
-      </li>
-      <li>
-        Note: FireFox keeps the state of some HTML elements on refresh,
-        so the buttons may not look disabled on refresh. Do not click
-        the buttons right away. Either go to the site again by hitting
-        Enter in the URL bar or just wait ~30 seconds.
-      </li>
-      <li>
-        Enter TSV data into the text area. The tool assumes the first
+        Enter TSV data into the left text area. The tool assumes the first
         row is headers, and does not (currently) do any data validation.
-        Make sure that your data is formatted properly and choose the
-        regression model that matches the input.
+        Make sure that your data is formatted properly and click
+        the "Validate" button on the right side. Applicable regression
+        models should appear.
+      </li>
+      <li>
+        Once you click on a model, it takes a little bit
+        when you first select an option, but subsequent 
+        regressions should be instantaneous as long as you do
+        not leave the site. If it doesn't work the first time,
+        click it again. If it doesn't work after that, refresh
+        and then try again.
       </li>
       <li>
         Data should be columns of A, B, C, Vmax in that order.
