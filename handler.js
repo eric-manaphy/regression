@@ -22,8 +22,8 @@ for(let i = 1; i < processed_input.length; ++i) {
 }
 
 const code = `
-import numpy as np
-from scipy.optimize import curve_fit
+#import numpy as np
+#from scipy.optimize import curve_fit
 
 def simple(X, a, b):
     A, B = X
