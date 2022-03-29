@@ -62,7 +62,7 @@ print(popt, perr)
 np.array([popt, perr])
 `
 
-const output = ""
+let output = ""
 try {
   output = pyodide.runPython(code);
 }
