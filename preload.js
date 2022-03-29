@@ -6,5 +6,7 @@ async function load() {
   button.id = 'validate';
   button.onclick = 'validate()';
   button.innerText = 'Validate';
+  message.innerHTML = '';
+  message.appendChild(button);
 }
 load();
