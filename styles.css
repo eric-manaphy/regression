@@ -1,12 +1,12 @@
 div.display {
-    height: 50vh;
+    height: 500px;
     width: 100%;
 }
 
 div.display > div {
     display: inline-block;
     border: solid;
-    width: 50%;
+    max-width: 50%;
 }
 
 textarea {
