@@ -7,7 +7,7 @@ function validate() {
     }
     const num_tabs = (input.match(/\t/g) || []).length;
     const num_br = (input.match(/\n/g) || []).length;
-    if(!num_tabs || !num_br || !(num_tabs % (num_br + 1))) {
+    if(!num_tabs || !num_br || num_tabs % (num_br + 1) !== 0) {
         result.innerText = "The whitespace seems to be off";
         return;
     }
