@@ -4,7 +4,7 @@ async function load() {
   let message = document.getElementById('button-field');
   let button = document.createElement('button');
   button.id = 'validate';
-  button.onclick = 'validate()';
+  button.setAttribute('onclick', 'validate()');
   button.innerText = 'Validate';
   message.innerHTML = '';
   message.appendChild(button);
