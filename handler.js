@@ -8,7 +8,7 @@ const curves = {
 };
 
 function submit(type) {
-let input = document.getElementById('input').value;
+const input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
 // idk if there's a more efficient way
@@ -62,7 +62,7 @@ print(popt, perr)
 numpy.array([popt, perr])
 `
 
-const output = pyodide.runpython(code)
+const output = pyodide.runPython(code)
 console.log(output);
 const popt = output[0];
 const perr = output[1];
