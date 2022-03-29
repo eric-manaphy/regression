@@ -48,18 +48,21 @@ function validate() {
   button.setAttribute('onclick','validate()');
   button.innerText = 'Validate';
   message.appendChild(button);
-  const linebreak = document.createElement('br');
+  let linebreak = document.createElement('br');
   message.appendChild(linebreak);
+  
   for(const model of models[model_idx]) {
-    console.log(model, model_idx, models[model_idx])
     button = document.createElement('button');
     let image = document.createElement('img');
     image.src = `images/${model}.png`;
     image.alt = model.replace('_', ' ');
     image.title = model.replace('_', ' ');
     button.id = model;
-    button.setAttribute('onclick',`submit(${model})`);
+    button.setAttribute('onclick',`submit("${model}")`);
     button.appendChild(image);
     message.appendChild(button);
+
+    linebreak = document.createElement('br');
+    message.appendChild(linebreak);
   }
 }
