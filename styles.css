@@ -1,3 +1,11 @@
+div.title {
+    height: 30%;
+}
+
+div.content {
+    height: 70%;
+}
+
 div.display {
     display: flex;
     padding: 10px;
@@ -26,6 +34,6 @@ div.display > div#text-output {
 
 textarea {
     width: 100%;
-    min-height: 70%;
+    min-height: 90%;
     resize: none;
 }
