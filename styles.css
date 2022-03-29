@@ -2,6 +2,11 @@ button#validate {
     font-size: 20px;
 }
 
+button > img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
 div.title {
     height: 10%;
 }
@@ -22,7 +27,8 @@ div#result {
 }
 
 div#result > p {
-    font-size: 15px;
+    font-size: 20px;
+    margin: 5px;
 }
 
 div.display {
