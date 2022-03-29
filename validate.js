@@ -48,7 +48,8 @@ function validate() {
   button.setAttribute('onclick','validate()');
   button.innerText = 'Validate';
   message.appendChild(button);
-  message.appendChild(document.createElement('br'));
+  const linebreak = document.createElement('br');
+  message.appendChild(linebreak);
   for(const model of models[model_idx]) {
     console.log(model, model_idx, models[model_idx])
     button = document.createElement('button');

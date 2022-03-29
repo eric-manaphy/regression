@@ -5,7 +5,7 @@ async function load() {
   let button = document.createElement('button');
   button.id = 'validate';
   button.setAttribute('onclick', 'validate()');
-  button.innerText = 'Validate';
+  button.innerText = 'Re-validate';
   message.innerHTML = '';
   message.appendChild(button);
 }
