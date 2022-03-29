@@ -1,0 +1,5 @@
+div.display > div {
+    display: inline-block;
+    border: solid;
+    max-width: 50%;
+}

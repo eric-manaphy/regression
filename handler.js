@@ -8,21 +8,21 @@ const curves = {
 };
 
 function submit(type) {
-let input = document.getElementById('input').value;
+let inumpyut = document.getElementById('inumpyut').value;
 let result = document.getElementById('result');
 
 // idk if there's a more efficient way
-const processed_input = input.split('\n').map((line) => line.split('\t'));
-let input_arr = new Array(processed_input[0].length);
-for(let i = 1; i < processed_input.length; ++i) {
-  for(let j = 0; j < processed_input[i].length; ++j) {
-    if(input_arr[j] === undefined) input_arr[j] = [];
-    input_arr[j].push(processed_input[i][j]);
+const processed_inumpyut = inumpyut.split('\n').map((line) => line.split('\t'));
+let inumpyut_arr = new Array(processed_inumpyut[0].length);
+for(let i = 1; i < processed_inumpyut.length; ++i) {
+  for(let j = 0; j < processed_inumpyut[i].length; ++j) {
+    if(inumpyut_arr[j] === undefined) inumpyut_arr[j] = [];
+    inumpyut_arr[j].push(processed_inumpyut[i][j]);
   }
 }
 
 const code = `
-#import numpy as np
+#import numpy as numpy
 #from scipy.optimize import curve_fit
 
 def simple(X, a, b):
@@ -53,16 +53,16 @@ def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
     A, B, C = X
     return (Vmax*A*B*C)/(KIA*KB*C+KC*A*B+KB*A*C+KA*B*C+A*B*C)
 
-A = np.array([${input_arr[0].join(',')}])
-B = np.array([${input_arr[1].join(',')}])
-z = np.array([${input_arr[2].join(',')}])
-popt, pcov = curve_fit(${type}, (A,B), z)
-perr = np.sqrt(np.diag(pcov))
+A = numpy.array([${inumpyut_arr[0].join(',')}])
+B = numpy.array([${inumpyut_arr[1].join(',')}])
+z = numpy.array([${inumpyut_arr[2].join(',')}])
+popt, pcov = scipy.optimize.curve_fit(${type}, (A,B), z)
+perr = numpy.sqrt(numpy.diag(pcov))
 print(popt, perr)
-np.array([popt, perr])
+numpy.array([popt, perr])
 `
 
-const output = pyodide.runPython(code)
+const output = pyodide.runumpyython(code)
 console.log(output);
 const popt = output[0];
 const perr = output[1];

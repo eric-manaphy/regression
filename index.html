@@ -9,9 +9,9 @@
 
   <!-- <link rel="icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+  <link rel="stylesheet" href="styles.css"> 
   <script type="text/javascript">
     window.languagePluginUrl = 'https://pyodide-cdn2.iodide.io/v0.15.0/full/';
   </script>
@@ -21,27 +21,31 @@
 </head>
 
 <body>
-  <textarea id="input" type="text" rows="30" cols="100"></textarea>
-  <br />
-  <button id="uni_uni" onclick="submit('uni_uni')" disabled>
-    Uni-Uni
-  </button>
-  <button id="uni_uni_comp_inhib" onclick="submit('uni_uni_comp_inhib')" disabled>
-    Uni-Uni, Competitive Inhibition
-  </button>
-  <button id="ping_pong_bi_bi" onclick="submit('ping_pong_bi_bi')" disabled>
-    Ping-Pong Bi-Bi
-  </button>
-  <button id="ordered_bi_bi" onclick="submit('ordered_bi_bi')" disabled>
-    Ordered Bi-Bi
-  </button>
-  <button id="ordered_ter_ter" onclick="submit('ordered_ter_ter')" disabled>
-    Ordered Ter-Ter
-  </button>
-  <button id="bi_uni_uni_uni_ping_pong" onclick="submit('bi_uni_uni_uni_ping_pong')" disabled>
-    Bi-Uni-Uni-Uni Ping-Pong
-  </button>
-  <div id="result"></div>
+  <div id="display" class="display">
+    <div id="text-input">
+      <textarea id="input" type="text" rows="30" cols="100"></textarea>
+    </div>
+    <div id="result">
+      <button id="uni_uni" onclick="submit('uni_uni')" disabled>
+        Uni-Uni
+      </button>
+      <button id="uni_uni_comp_inhib" onclick="submit('uni_uni_comp_inhib')" disabled>
+        Uni-Uni, Competitive Inhibition
+      </button>
+      <button id="ping_pong_bi_bi" onclick="submit('ping_pong_bi_bi')" disabled>
+        Ping-Pong Bi-Bi
+      </button>
+      <button id="ordered_bi_bi" onclick="submit('ordered_bi_bi')" disabled>
+        Ordered Bi-Bi
+      </button>
+      <button id="ordered_ter_ter" onclick="submit('ordered_ter_ter')" disabled>
+        Ordered Ter-Ter
+      </button>
+      <button id="bi_uni_uni_uni_ping_pong" onclick="submit('bi_uni_uni_uni_ping_pong')" disabled>
+        Bi-Uni-Uni-Uni Ping-Pong
+      </button>
+    </div>
+  </div>
   <br>
   <div id="howto">
     <h1>How to use this tool</h1>
