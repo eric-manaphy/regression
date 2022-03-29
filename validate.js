@@ -47,7 +47,10 @@ function validate() {
   button.id = 'validate';
   button.setAttribute('onclick','validate()');
   button.innerText = 'Validate';
+  message.appendChild(button);
+  message.appendChild(document.createElement('br'));
   for(const model in models[model_idx]) {
+    console.log(model, model_idx, models[model_idx])
     button = document.createElement('button');
     let image = document.createElement('img');
     image.src = `images/${model}.png`;
