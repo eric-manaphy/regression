@@ -23,11 +23,11 @@ function validate() {
   }
 
   const processed_input = input.split('\n').map((line) => line.split('\t'));
-  if(processed_input[0].length < 2) {
+  const length = processed_input[0].length;
+  if(length < 2) {
       message.innerText = "There doesn't seem to be enough columns.";
       return;
   }
-  const length = processed_input[0].length;
   for(let i = 1; i < processed_input.length; ++i) {
     for(let j = 0; j < processed_input[i].length; ++j) {
         if(!isNumber(processed_input[i][j])) {
@@ -41,11 +41,11 @@ function validate() {
     }
   }
 
-  const model_idx = processed_input[0].length - 2;
+  const model_idx = length - 2;
   message.innerHTML = '';
   let button = document.createElement('button');
   button.id = 'validate';
-  button.onclick = 'validate()';
+  button.setAttribute('onclick','validate()');
   button.innerText = 'Validate';
   for(const model in models[model_idx]) {
     button = document.createElement('button');
@@ -54,7 +54,7 @@ function validate() {
     image.alt = model.replace('_', ' ');
     image.title = model.replace('_', ' ');
     button.id = model;
-    button.onclick = `submit(${model})`;
+    button.setAttribute('onclick',`submit(${model})`);
     button.appendChild(image);
     message.appendChild(button);
   }
