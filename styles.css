@@ -20,10 +20,9 @@ div.display > div#text-input {
     border-color: green;
 }
 
-div.display > div#result {
+div.display > div#text-output {
     border-color: red;
 }
-
 
 textarea {
     width: 100%;
