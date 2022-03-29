@@ -62,7 +62,14 @@ print(popt, perr)
 np.array([popt, perr])
 `
 
-const output = pyodide.runPython(code)
+const output = ""
+try {
+  output = pyodide.runPython(code);
+}
+catch (error) {
+  result.innerHTML = 'Try clicking the button again.';
+  return;
+}
 console.log(output);
 const popt = output[0];
 const perr = output[1];

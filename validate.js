@@ -41,12 +41,14 @@ function validate() {
     }
   }
 
+  document.getElementById('input').disabled = true;
+
   const model_idx = length - 2;
   message.innerHTML = '';
   let button = document.createElement('button');
   button.id = 'validate';
-  button.setAttribute('onclick','validate()');
-  button.innerText = 'Re-validate';
+  button.setAttribute('onclick','reset()');
+  button.innerText = 'Re-validate?';
   message.appendChild(button);
 
   message.appendChild(document.createElement('br'));
