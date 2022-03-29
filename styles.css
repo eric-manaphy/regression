@@ -1,3 +1,28 @@
+div.display {
+    display: flex;
+    padding: 10px;
+    height: 77vh;
+    width: 100%;
+}
+
+div.display > div {
+    border: 2px solid;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    height: 100%;
+    width: 50%;
+    vertical-align: top;
+}
+
+div.display > div#text-input {
+    border-color: green;
+}
+
+div.display > div#text-output {
+    border-color: red;
+}
+
 button#validate {
     font-size: 20px;
 }
@@ -29,31 +54,6 @@ div#result {
 div#result > p {
     font-size: 20px;
     margin: 5px;
-}
-
-div.display {
-    display: flex;
-    padding: 10px;
-    height: 90vh;
-    width: 100%;
-}
-
-div.display > div {
-    border: 2px solid;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    height: 100%;
-    width: 50%;
-    vertical-align: top;
-}
-
-div.display > div#text-input {
-    border-color: green;
-}
-
-div.display > div#text-output {
-    border-color: red;
 }
 
 textarea {
