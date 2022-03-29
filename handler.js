@@ -67,6 +67,7 @@ try {
   output = pyodide.runPython(code);
 }
 catch (error) {
+  console.error(error);
   result.innerHTML = 'Try clicking the button again.';
   return;
 }
