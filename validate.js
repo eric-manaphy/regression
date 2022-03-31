@@ -53,6 +53,7 @@ function validate(type) {
     let label = document.createElement("label");
     let input_field = document.createElement("input");
     label.setAttribute('for', `${param}`);
+    labbel.innerText = `${param}: `;
     input_field.setAttribute('type', 'number');
     input_field.setAttribute('id', `${param}`);
     input_field.setAttribute('name', `${param}`);
@@ -65,6 +66,6 @@ function validate(type) {
 
   let button = document.createElement('button');
   button.setAttribute('id', 'submit');
-  button.setAttribute('onclick',`submit("${model}")`);
+  button.setAttribute('onclick',`submit("${type}")`);
   ig.appendChild(button);
 }

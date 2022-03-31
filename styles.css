@@ -70,8 +70,26 @@ div#initial-guess {
     text-align: center;
 }
 
+div#initial-guess > input{
+    margin: 2px;
+}
+
 textarea {
     width: 99%;
     height: 95%;
     resize: none;
+}
+
+
+/* Disabling the arrows in input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
