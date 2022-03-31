@@ -5,8 +5,15 @@ let result = document.getElementById('result');
 
 // idk if there's a more efficient way
 const processed_input = input.split('\n').map((line) => line.split('\t'));
+let start_idx = 0;
+for(const val of processed_input[0]) {
+  if(!isNumber(val)) {
+    start_idx = 1;
+    break;
+  }
+}
 let input_arr = new Array(processed_input[0].length);
-for(let i = 1; i < processed_input.length; ++i) {
+for(let i = start_idx; i < processed_input.length; ++i) {
   for(let j = 0; j < processed_input[i].length; ++j) {
     if(input_arr[j] === undefined) input_arr[j] = [];
     input_arr[j].push(processed_input[i][j]);
@@ -72,13 +79,13 @@ catch (error) {
 console.log(output);
 const popt = output[0];
 const perr = output[1];
-const curve = curves[type];
+const output_vars = params[type];
 result.innerHTML = '';
 for(let i = 0; i < popt.length; ++i) {
   let p = document.createElement('p');
   let text = '';
   if(perr[i] === Infinity)
-    text = document.createTextNode(`${curve[i]}: ${popt[i]}`);
+    text = document.createTextNode(`${output_vars[i]}: ${popt[i]}`);
   else {
     let precision = Math.ceil(-Math.log10(perr[i]))
     let sigfigs = precision - Math.ceil(-Math.log10(popt[i]));
@@ -86,7 +93,7 @@ for(let i = 0; i < popt.length; ++i) {
       popt[i].toPrecision(sigfigs + 1) : 0;
     let err = perr[i].toPrecision(1) === "1" ?
       perr[i].toPrecision(2) : perr[i].toPrecision(1);
-    text = document.createTextNode(`${curve[i]}: ${num}±${err}`);
+    text = document.createTextNode(`${output_vars[i]}: ${num}±${err}`);
   }
   p.appendChild(text);
   result.appendChild(p);

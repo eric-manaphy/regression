@@ -14,7 +14,8 @@ async function load() {
       button.setAttribute('onclick',`validate("${model}")`);
       button.appendChild(image);
       message.appendChild(button);
-      message.innerHTML += "&nbsp;&nbsp;"
+      message.appendChild(document.createElement('br'));
+      message.appendChild(document.createElement('br'));
     }
   }
 }

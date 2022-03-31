@@ -6,10 +6,22 @@ function validate(type) {
   const input = document.getElementById('input').value.trim();
   let message = document.getElementById('result'); // error box
   let ig = document.getElementById('initial-guess');
+  let labels = document.getElementById('labels');
+
   ig.removeAttribute('class');
   ig.innerHTML = '';
 
-  if(input.indexOf('\t') < -1) {
+  labels.innerHTML = '';
+  let header = document.createElement('h3');
+  let header_text = '';
+  for(const param of input_params[type]) {
+    header_text += param;
+    header_text += '&emsp;';
+  }
+  header.appendChild(document.createTextNode(header_text));
+  labels.appendChild(header);
+
+  if(input.indexOf('\t') < 0) {
     message.innerText = "The input doesn't seem to be TSV.";
     return;
   }
@@ -31,7 +43,14 @@ function validate(type) {
     message.innerText = "The doesn't seem to be enough columns for this regression model.";
     return;
   }
-  for(let i = 1; i < processed_input.length; ++i) {
+  let start_idx = 0;
+  for(const val of processed_input[0]) {
+    if(!isNumber(val)) {
+      start_idx = 1;
+      break;
+    }
+  }
+  for(let i = start_idx; i < processed_input.length; ++i) {
     for(let j = 0; j < processed_input[i].length; ++j) {
         if(!isNumber(processed_input[i][j])) {
             message.innerText = "A data value seems to be formatted improperly.";
@@ -50,7 +69,7 @@ function validate(type) {
   p.appendChild(text);
   ig.appendChild(p);
 
-  for(const param of curves[models[length - 2][model_idx]]) {
+  for(const param of params[models[length - 2][model_idx]]) {
     let label = document.createElement("label");
     let input_field = document.createElement("input");
     label.setAttribute('for', `${param}`);
