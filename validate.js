@@ -16,7 +16,7 @@ function validate(type) {
   let header_text = '';
   for(const param of input_params[type]) {
     header_text += param;
-    header_text += '&emsp;';
+    header_text += '&emsp;&emsp;';
   }
   header.innerHTML = header_text;
   labels.appendChild(header);
