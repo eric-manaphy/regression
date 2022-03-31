@@ -18,7 +18,7 @@ function validate(type) {
     header_text += param;
     header_text += '&emsp;';
   }
-  header.appendChild(document.createTextNode(header_text));
+  header.innerHTML = header_text;
   labels.appendChild(header);
 
   if(input.indexOf('\t') < 0) {
