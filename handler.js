@@ -26,8 +26,8 @@ def uni_uni(X, KA, Vmax):
     return (Vmax*A)/(KA+A)
 
 def uni_uni_comp_inhib(X, KA, KI, Vmax):
-    A = X
-    return (Vmax*A)/((1+1/KI)*KA+A)
+    A, I = X
+    return (Vmax*A)/((1+I/KI)*KA+A)
 
 def ping_pong_bi_bi(X, KA, KB, Vmax):
     A, B = X
