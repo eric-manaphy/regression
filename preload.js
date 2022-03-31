@@ -2,6 +2,7 @@ async function load() {
   await languagePluginLoader.then(() => { console.log('Ready') });
   await pyodide.loadPackage(["numpy", "scipy"]);
   let message = document.getElementById('button-field');
+  message.innerHTML = "";
   for(const model_type of models) {
     for(const model of model_type) {
       let button = document.createElement('button');
@@ -13,7 +14,7 @@ async function load() {
       button.setAttribute('onclick',`submit("${model}")`);
       button.appendChild(image);
       message.appendChild(button);
-      message.innerHTML += "&nbsp;"
+      message.innerHTML += "&nbsp;&nbsp;"
     }
   }
 }
