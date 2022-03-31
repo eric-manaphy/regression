@@ -1,44 +1,45 @@
 function isNumber(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n)
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 function validate(type) {
   const input = document.getElementById('input').value.trim();
-  let message = document.getElementById('button-field'); // error box
+  let message = document.getElementById('result'); // error box
   if(input.indexOf('\t') < -1) {
     message.innerText = "The input doesn't seem to be TSV.";
-    return;
+    return false;
   }
   const num_tabs = (input.match(/\t/g) || []).length;
   const num_br = (input.match(/\n/g) || []).length;
   if(!num_tabs || !num_br || num_tabs % (num_br + 1) !== 0) {
     message.innerText = "The whitespace seems to be off.";
-    return;
+    return false;
   }
 
   const processed_input = input.split('\n').map((line) => line.split('\t'));
   const length = processed_input[0].length;
   if(length < 2) {
       message.innerText = "There doesn't seem to be enough columns.";
-      return;
+      return false;
   }
   if(models[length - 2].find(x => x === type) === undefined) {
     message.innerText = "The doesn't seem to be enough columns for this regression model.";
-    return;
+    return false;
   }
   for(let i = 1; i < processed_input.length; ++i) {
     for(let j = 0; j < processed_input[i].length; ++j) {
         if(!isNumber(processed_input[i][j])) {
             message.innerText = "A data value seems to be formatted improperly.";
-            return;
+            return false;
         }
         if(processed_input[i].length !== length) {
             message.innerText = "There seems to be a missing data value."
-            return;
+            return false;
         }
     }
   }
-
+  // validated
+  return true;
   // document.getElementById('input').disabled = true;
 
   // const model_idx = length - 2;

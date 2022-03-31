@@ -1,5 +1,5 @@
 function submit(type) {
-validate(type);
+if(!validate(type)) return;
 const input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
