@@ -21,6 +21,8 @@ function validate(type) {
   header.innerHTML = header_text;
   labels.appendChild(header);
 
+  document.getElementById('input').setAttribute('class','with-header');
+
   if(input.indexOf('\t') < 0) {
     message.innerText = "The input doesn't seem to be TSV.";
     return;
