@@ -41,6 +41,10 @@ div.content {
 }
 
 div#button-field {
+    border: 2px solid;
+    border-radius: 5px;
+    height: 20%;
+    overflow-y: auto;
     text-align: center;
 }
 

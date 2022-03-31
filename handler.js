@@ -1,13 +1,5 @@
-const curves = {
-  uni_uni: ["KA", "Vmax"],
-  uni_uni_comp_inhib: ["KA", "KI", "Vmax"],
-  ping_pong_bi_bi: ["KA", "KB", "Vmax"],
-  ordered_bi_bi: ["KA", "KiA", "KB", "Vmax"],
-  ordered_ter_ter: ["KA", "KiA", "KB", "KiB", "KC", "Vmax"],
-  bi_uni_uni_uni_ping_pong: ["KA", "KIA", "KB", "KC", "Vmax"],
-};
-
 function submit(type) {
+validate(type);
 const input = document.getElementById('input').value;
 let result = document.getElementById('result');
 
