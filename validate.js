@@ -5,6 +5,9 @@ function isNumber(n) {
 function validate(type) {
   const input = document.getElementById('input').value.trim();
   let message = document.getElementById('result'); // error box
+  let ig = document.getElementById('initial-guess');
+  ig.removeAttribute('class');
+
   if(input.indexOf('\t') < -1) {
     message.innerText = "The input doesn't seem to be TSV.";
     return;
@@ -40,7 +43,6 @@ function validate(type) {
     }
   }
 
-  let ig = document.getElementById('initial-guess');
   ig.setAttribute('class', 'info-box');
   ig.innerHTML = '';
   let p = document.createElement('p');
