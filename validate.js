@@ -62,9 +62,10 @@ function validate(type) {
     ig.appendChild(input_field);
     ig.innerHTML += "&nbsp;&nbsp;"
   }
-
+  ig.appendChild(document.createElement('br'));
   let button = document.createElement('button');
   button.setAttribute('id', 'submit');
   button.setAttribute('onclick',`submit("${type}")`);
+  button.innerText = "Submit";
   ig.appendChild(button);
 }
