@@ -47,7 +47,6 @@ function validate(type) {
   let text = document.createTextNode("Enter your intial guesses here. Defaults to 1.")
   p.appendChild(text);
   ig.appendChild(p);
-  ig.appendChild(document.createElement('br'));
 
   for(const param of curves[models[length - 2][model_idx]]) {
     let label = document.createElement("label");
