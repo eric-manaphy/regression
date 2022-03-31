@@ -7,6 +7,7 @@ function validate(type) {
   let message = document.getElementById('result'); // error box
   let ig = document.getElementById('initial-guess');
   ig.removeAttribute('class');
+  ig.innerHTML = '';
 
   if(input.indexOf('\t') < -1) {
     message.innerText = "The input doesn't seem to be TSV.";
@@ -44,7 +45,6 @@ function validate(type) {
   }
 
   ig.setAttribute('class', 'info-box');
-  ig.innerHTML = '';
   let p = document.createElement('p');
   let text = document.createTextNode("Enter your intial guesses here. Defaults to 1.")
   p.appendChild(text);
