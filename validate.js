@@ -40,7 +40,7 @@ function validate(type) {
   }
   const model_idx = models[length - 2].findIndex(x => x === type);
   if(model_idx < 0) {
-    message.innerText = "The doesn't seem to be enough columns for this regression model.";
+    message.innerText = "There doesn't seem to be enough columns for this regression model.";
     return;
   }
   let start_idx = 0;
