@@ -1,6 +1,6 @@
 function submit(type) {
-if(!validate(type)) return;
 const input = document.getElementById('input').value;
+const ig_input = document.getElementsByTagName('input');
 let result = document.getElementById('result');
 
 // idk if there's a more efficient way
@@ -11,6 +11,11 @@ for(let i = 1; i < processed_input.length; ++i) {
     if(input_arr[j] === undefined) input_arr[j] = [];
     input_arr[j].push(processed_input[i][j]);
   }
+}
+
+let initial_guesses = [];
+for(const guess of ig_input) {
+  initial_guesses.push(isNumber(guess) ? guess : 1);
 }
 
 const code = `
@@ -48,7 +53,8 @@ def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
 A = np.array([${input_arr[0].join(',')}])
 B = np.array([${input_arr[1].join(',')}])
 z = np.array([${input_arr[2].join(',')}])
-popt, pcov = curve_fit(${type}, (A,B), z)
+p0 = np.array([${initial_guesses.join(',')}])
+popt, pcov = curve_fit(${type}, (A,B), z, p0)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])

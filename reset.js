@@ -1,3 +1,5 @@
+// Deprecated
+
 function reset() {
   document.getElementById('input').disabled = false;
   document.getElementById('result').innerHTML = '';

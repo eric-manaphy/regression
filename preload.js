@@ -11,7 +11,7 @@ async function load() {
       image.alt = model.replace('_', ' ');
       image.title = model.replace('_', ' ');
       button.id = model;
-      button.setAttribute('onclick',`submit("${model}")`);
+      button.setAttribute('onclick',`validate("${model}")`);
       button.appendChild(image);
       message.appendChild(button);
       message.innerHTML += "&nbsp;&nbsp;"
