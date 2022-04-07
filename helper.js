@@ -19,7 +19,7 @@ function generatePlotCode(type, arr, xvar) {
 
     let s = `
 fig, ax = plt.subplots()
-${params[xvar]} = np.array([${fixedarr[xvar].join(',')}])
+${xvar} = np.array([${fixedarr[xvar].join(',')}])
 ${generatePlotCodeSub(type, fixedarr, xvar, params, fixedparams, '')}
 plt.legend()
 buf = io.BytesIO()

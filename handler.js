@@ -102,6 +102,8 @@ for(let i = 0; i < popt.length; ++i) {
   }
   p.appendChild(text);
   result.appendChild(p);
+}
+if(xvar.length > 0) {
   let img = document.createElement('img');
   img.setAttribute('src', pyodide.globals.img_src);
   result.appendChild(img);
