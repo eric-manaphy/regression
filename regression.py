@@ -37,9 +37,9 @@ print(popt, perr)
 
 a, b = popt
 x_data = np.array((A, B))
-plt.plot(A, simple((A, B), *popt), 'g-', label="A")
-plt.plot(B, simple((A, B), *popt), 'ro', label="B")
-plt.axis([0, 2, 0, 50])
+plt.plot(A, simple((A, B), *popt), label="A")
+plt.plot(B, simple((A, B), *popt), label="B")
+# plt.axis([0, 2, 0, 50])
 plt.legend()
 plt.show()
 plt.savefig("temp.png")

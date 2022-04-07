@@ -1,7 +1,3 @@
-function isNumber(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
 function validate(type) {
   const input = document.getElementById('input').value.trim();
   let message = document.getElementById('result'); // error box
@@ -12,14 +8,19 @@ function validate(type) {
   ig.innerHTML = '';
 
   labels.innerHTML = '';
-  let header = document.createElement('h3');
-  let header_text = '';
-  for(const param of input_params[type]) {
-    header_text += param;
-    header_text += '&emsp;&emsp;';
+  for(let i = 0; i < input_params[type].length - 1; ++i) {
+    let inputvar = input_params[type][i];
+    let radio = document.createElement('input');
+    radio.setAttribute('type', 'radio');
+    radio.setAttribute('id', `${inputvar}_check`);
+    radio.setAttribute('name', 'xvars');
+    radio.setAttribute('value', inputvar);
+    let label = document.createElement('label');
+    label.setAttribute('for', `${inputvar}_check`);
+    label.innerText = inputvar;
+    labels.appendChild(radio);
+    labels.appendChild(label);
   }
-  header.innerHTML = header_text;
-  labels.appendChild(header);
 
   document.getElementById('input').setAttribute('class','with-header');
 

@@ -12,6 +12,7 @@ for(const val of processed_input[0]) {
     break;
   }
 }
+
 let input_arr = new Array(processed_input[0].length);
 for(let i = start_idx; i < processed_input.length; ++i) {
   for(let j = 0; j < processed_input[i].length; ++j) {
@@ -25,9 +26,13 @@ for(const guess of ig_input) {
   initial_guesses.push(isNumber(guess) ? guess : 1);
 }
 
+const xvar = document.getElementsByName('xvars').filter((x) => x.checked).value;
+
 const code = `
 import numpy as np
 from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+import io, base64
 
 def simple(X, a, b):
     A, B = X
@@ -57,14 +62,13 @@ def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
     A, B, C = X
     return (Vmax*A*B*C)/(KIA*KB*C+KC*A*B+KB*A*C+KA*B*C+A*B*C)
 
-A = np.array([${input_arr[0].join(',')}])
-B = np.array([${input_arr[1].join(',')}])
-z = np.array([${input_arr[2].join(',')}])
+${generateInputArrays(type, input_arr)}
 p0 = np.array([${initial_guesses.join(',')}])
-popt, pcov = curve_fit(${type}, (A,B), z, p0)
+popt, pcov = curve_fit(${type}, (${input_params[type].slice(0,input_params[type].length).join(',')}), z, p0)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])
+${generatePlotCode(type, input_arr, xvar)}
 `
 
 let output = ""
@@ -97,5 +101,8 @@ for(let i = 0; i < popt.length; ++i) {
   }
   p.appendChild(text);
   result.appendChild(p);
+  let img = document.createElement('img');
+  img.setAttribute('src', pyodide.globals.img_src);
+  result.appendChild(img);
 }
 }

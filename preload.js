@@ -1,6 +1,6 @@
 async function load() {
   await languagePluginLoader.then(() => { console.log('Ready') });
-  await pyodide.loadPackage(["numpy", "scipy"]);
+  await pyodide.loadPackage(["numpy", "scipy", "matplotlib"]);
   let message = document.getElementById('button-field');
   message.innerHTML = "";
   for(const model_type of models) {
