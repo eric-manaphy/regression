@@ -34,7 +34,7 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, s) {
         return `ax.plot(${xvar}, ${type}((${origparams.join(',')}), *popt))\n`;
     const currparam = fixparams[0];
     for(let i = 0; i < arr[currparam].length; ++i) {
-        s += `${currparam} = np.array([${(arr[currparam][i].toString() + ',').repeat(arr[xvar].length)}])\n`;
+        s += `${currparam} = np.array([${(arr[currparam][i].toString() + ',').repeat(arr[xvar].length).slice(0, -1)}])\n`;
         s += generatePlotCodeSub(type, arr, xvar, origparams, fixparams.slice(1), s);
     }
     return s;
