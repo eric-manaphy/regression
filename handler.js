@@ -70,6 +70,7 @@ print(popt, perr)
 np.array([popt, perr])
 ${xvar.length > 0 ? generatePlotCode(type, input_arr, xvar[0].value) : ''}
 `
+console.log(code);
 
 let output = ""
 try {
