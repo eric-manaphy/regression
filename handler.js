@@ -1,6 +1,6 @@
 function submit(type) {
 const input = document.getElementById('input').value;
-const ig_input = document.getElementsByTagName('input');
+const ig_input = [...document.getElementsByTagName('input')].filter((x) => x.type !== 'radio');
 let result = document.getElementById('result');
 
 // idk if there's a more efficient way
