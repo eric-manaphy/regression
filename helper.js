@@ -6,6 +6,7 @@ function generateInputArrays(type, arr) {
     let s = '';
     for(let i = 0; i < arr.length; ++i)
         s += `${input_params[type][i]} = np.array([${arr[i].join(',')}])\n`;
+    console.log(s);
     return s.trim();
 }
 
