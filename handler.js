@@ -26,7 +26,7 @@ for(const guess of ig_input) {
   initial_guesses.push(isNumber(guess) ? guess : 1);
 }
 
-const xvar = [...document.getElementsByName('xvars')].filter((x) => x.checked)[0].value;
+const xvar = [...document.getElementsByName('xvars')].filter((x) => x.checked);
 
 const code = `
 import numpy as np
@@ -64,11 +64,11 @@ def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
 
 ${generateInputArrays(type, input_arr)}
 p0 = np.array([${initial_guesses.join(',')}])
-popt, pcov = curve_fit(${type}, (${input_params[type].slice(0,input_params[type].length).join(',')}), z, p0)
+popt, pcov = curve_fit(${type}, (${input_params[type].slice(0,input_params[type].length).join(',')}), ${input_params[type][input_params.length - 1]}, p0)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])
-${generatePlotCode(type, input_arr, xvar)}
+${xvar.length > 0 ? '' : generatePlotCode(type, input_arr, xvar[0].value)}
 `
 
 let output = ""
