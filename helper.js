@@ -21,7 +21,7 @@ function generatePlotCode(type, arr, xvar) {
 fig, ax = plt.subplots()
 ${xvar} = np.array([${fixedarr[xvar].join(',')}])
 ${generatePlotCodeSub(type, fixedarr, xvar, params, fixedparams, '')}
-plt.legend()
+
 buf = io.BytesIO()
 fig.savefig(buf, format='png')
 img_src = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')`;
