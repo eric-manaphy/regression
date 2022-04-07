@@ -24,7 +24,7 @@ function validate(type) {
     labels.appendChild(span);
   }
   let span = document.createElement('span');
-  span.innerText = input_params[type][input_params.length - 1];
+  span.innerText = input_params[type].at(-1);
   labels.appendChild(span);
 
   document.getElementById('input').setAttribute('class','with-header');
