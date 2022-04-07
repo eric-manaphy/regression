@@ -64,7 +64,7 @@ def bi_uni_uni_uni_ping_pong(X, KA, KIA, KB, KC, Vmax):
 
 ${generateInputArrays(type, input_arr)}
 p0 = np.array([${initial_guesses.join(',')}])
-popt, pcov = curve_fit(${type}, (${input_params[type].slice(0,input_params[type].length - 1).join(',')}), ${input_params[type][input_params[type].length - 1]}, p0)
+popt, pcov = curve_fit(${type}, (${input_params[type].slice(0,-1).join(',')}), ${input_params[type][input_params[type].length - 1]}, p0)
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])

@@ -10,7 +10,7 @@ function generateInputArrays(type, arr) {
 }
 
 function generatePlotCode(type, arr, xvar) {
-    const params = input_params[type].slice(0, input_params[type].length - 1);
+    const params = input_params[type].slice(0, -1);
     const fixedarr = params.reduce(
         (acc, curr, i) => ({...acc, [curr]: [...new Set(arr[i])]}),
         {}
