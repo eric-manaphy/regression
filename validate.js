@@ -10,6 +10,7 @@ function validate(type) {
   labels.innerHTML = '';
   for(let i = 0; i < input_params[type].length - 1; ++i) {
     let inputvar = input_params[type][i];
+    let span = document.createElement('span');
     let radio = document.createElement('input');
     radio.setAttribute('type', 'radio');
     radio.setAttribute('id', `${inputvar}_check`);
@@ -18,9 +19,13 @@ function validate(type) {
     let label = document.createElement('label');
     label.setAttribute('for', `${inputvar}_check`);
     label.innerText = inputvar;
-    labels.appendChild(radio);
-    labels.appendChild(label);
+    span.appendChild(radio);
+    span.appendChild(label);
+    labels.appendChild(span);
   }
+  let span = document.createElement('span');
+  span.innerText = input_params[type][input_params.length - 1];
+  labels.appendChild(span);
 
   document.getElementById('input').setAttribute('class','with-header');
 

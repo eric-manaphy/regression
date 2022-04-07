@@ -36,6 +36,10 @@ div.content {
     height: 90%;
 }
 
+div#labels > span {
+    margin: 0 4em 0 0;
+}
+
 div.info-box {
     margin: 2px;
     padding: 2px;
@@ -72,6 +76,11 @@ div#initial-guess {
 
 div#initial-guess > input{
     margin: 2px;
+}
+
+div#result {
+    overflow-y: auto;
+    max-height: 30%;
 }
 
 textarea.no-header {
