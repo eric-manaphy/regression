@@ -68,7 +68,7 @@ popt, pcov = curve_fit(${type}, (${input_params[type].slice(0,input_params[type]
 perr = np.sqrt(np.diag(pcov))
 print(popt, perr)
 np.array([popt, perr])
-${xvar.length > 0 ? generatePlotCode(type, input_arr, xvar[0].value : '')}
+${xvar.length > 0 ? generatePlotCode(type, input_arr, xvar[0].value) : ''}
 `
 
 let output = ""
