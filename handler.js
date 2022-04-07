@@ -26,7 +26,7 @@ for(const guess of ig_input) {
   initial_guesses.push(isNumber(guess) ? guess : 1);
 }
 
-const xvar = document.getElementsByName('xvars').filter((x) => x.checked).value;
+const xvar = [...document.getElementsByName('xvars')].filter((x) => x.checked)[0].value;
 
 const code = `
 import numpy as np
