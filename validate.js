@@ -20,7 +20,7 @@ function validate(type) {
     radio.setAttribute('value', inputvar);
     let label = document.createElement('label');
     label.setAttribute('for', `${inputvar}_check`);
-    label.innerText = inputvar;
+    label.innerText = inputvar + ' <TAB> ';
     span.appendChild(radio);
     span.appendChild(label);
     labels.appendChild(span);
@@ -92,7 +92,7 @@ function validate(type) {
     input_field.setAttribute('value', '1');
     ig.appendChild(label);
     ig.appendChild(input_field);
-    ig.innerHTML += "&nbsp;&lt;TAB&gt;&nbsp;"
+    ig.innerHTML += "&nbsp;&nbsp;"
   }
   ig.appendChild(document.createElement('br'));
   let button = document.createElement('button');
