@@ -79,6 +79,7 @@ function validate(type) {
   p.appendChild(text);
   ig.appendChild(p);
   buttonfield.classList.add('with-ig');
+  buttonfield.classList.remove('no-ig');
 
   for(const param of params[models[length - 2][model_idx]]) {
     let label = document.createElement("label");
