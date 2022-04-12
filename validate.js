@@ -6,6 +6,7 @@ function validate(type) {
   let labels = document.getElementById('labels');
 
   buttonfield.classList.remove('with-ig');
+  buttonfield.classList.add('no-ig');
   ig.removeAttribute('class');
   ig.innerHTML = '';
 
