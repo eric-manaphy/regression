@@ -31,7 +31,7 @@ img_src = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode('UT
 
 function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, s) {
     if(fixparams.length === 0)
-        return `ax.plot(${xvar}, ${type}((${origparams.join(',')}), *popt))\n`;
+        return `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)))\n`;
     const currparam = fixparams[0];
     for(let i = 0; i < arr[currparam].length; ++i) {
         s += `${currparam} = np.array([${(arr[currparam][i].toString() + ',').repeat(arr[xvar].length).slice(0, -1)}])\n`;
