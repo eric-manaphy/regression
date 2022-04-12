@@ -64,6 +64,10 @@ div#button-field > button {
     height: 75px;
 }
 
+div.no-ig {
+    max-height: 100%;
+}
+
 div.with-ig {
     max-height: 80%;
 }
