@@ -1,9 +1,11 @@
 function validate(type) {
   const input = document.getElementById('input').value.trim();
+  let buttonfield = document.getElementById('button-field');
   let message = document.getElementById('result'); // error box
   let ig = document.getElementById('initial-guess');
   let labels = document.getElementById('labels');
 
+  buttonfield.classList.remove('with-ig');
   ig.removeAttribute('class');
   ig.innerHTML = '';
 
@@ -76,6 +78,7 @@ function validate(type) {
   let text = document.createTextNode("Enter your intial guesses here. Defaults to 1.")
   p.appendChild(text);
   ig.appendChild(p);
+  buttonfield.classList.add('with-ig');
 
   for(const param of params[models[length - 2][model_idx]]) {
     let label = document.createElement("label");
