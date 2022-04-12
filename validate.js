@@ -92,7 +92,7 @@ function validate(type) {
     input_field.setAttribute('value', '1');
     ig.appendChild(label);
     ig.appendChild(input_field);
-    ig.innerHTML += "&nbsp;&nbsp;"
+    ig.innerHTML += "&nbsp;&lt;TAB&gt;&nbsp;"
   }
   ig.appendChild(document.createElement('br'));
   let button = document.createElement('button');

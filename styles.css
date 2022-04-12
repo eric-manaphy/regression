@@ -84,7 +84,7 @@ div.ig-visible > input{
 
 div#result {
     overflow-y: auto;
-    max-height: 30%;
+    max-height: 40%;
 }
 
 textarea.no-header {
