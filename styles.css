@@ -55,8 +55,7 @@ div.info-box > p {
 div#button-field {
     border: 2px solid;
     border-radius: 5px;
-    height: 350px;
-    max-height: 40%;
+    max-height: 90%;
     overflow-y: auto;
     text-align: center;
 }
@@ -85,13 +84,13 @@ div#result {
 
 textarea.no-header {
     width: 99%;
-    height: 95%;
+    height: 40%;
     resize: none;
 }
 
 textarea.with-header {
     width: 99%;
-    height: 90%;
+    height: 40%;
     resize: none;
 }
 

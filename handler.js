@@ -17,7 +17,8 @@ let input_arr = new Array(processed_input[0].length);
 for(let i = start_idx; i < processed_input.length; ++i) {
   for(let j = 0; j < processed_input[i].length; ++j) {
     if(input_arr[j] === undefined) input_arr[j] = [];
-    input_arr[j].push(processed_input[i][j]);
+    input_arr[j].push(processed_input[i][j].indexOf('.') > -1 ?
+    processed_input[i][j] : processed_input[i][j] + '.');
   }
 }
 
