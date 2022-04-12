@@ -55,13 +55,17 @@ div.info-box > p {
 div#button-field {
     border: 2px solid;
     border-radius: 5px;
-    max-height: 90%;
+    max-height: 100%;
     overflow-y: auto;
     text-align: center;
 }
 
 div#button-field > button {
     height: 75px;
+}
+
+div.with-ig {
+    max-height: 80%;
 }
 
 button > img {
@@ -71,6 +75,7 @@ button > img {
 
 div#initial-guess {
     text-align: center;
+    max-height: 15%;
 }
 
 div#initial-guess > input{
