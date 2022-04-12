@@ -73,12 +73,12 @@ button > img {
     max-height: 100%;
 }
 
-div#initial-guess {
+div.ig-visible {
     text-align: center;
     max-height: 18%;
 }
 
-div#initial-guess > input{
+div.ig-visible > input{
     margin: 2px;
 }
 

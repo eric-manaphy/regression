@@ -73,7 +73,7 @@ function validate(type) {
     }
   }
 
-  ig.setAttribute('class', 'info-box');
+  ig.classList.toggle('ig-visible', 'info-box');
   let p = document.createElement('p');
   let text = document.createTextNode("Enter your intial guesses here. Defaults to 1.")
   p.appendChild(text);
