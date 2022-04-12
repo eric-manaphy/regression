@@ -15,7 +15,7 @@ div.display > div {
     vertical-align: top;
 }
 
-div.display h1, div.display h3 {
+div.display h3 {
     margin: 5px;
     padding: 2px;
 }
@@ -29,7 +29,8 @@ div.display > div#text-output {
 }
 
 div.title {
-    height: 10%;
+    height: 5%;
+    margin-bottom: 5px;
 }
 
 div.content {
@@ -55,7 +56,6 @@ div.info-box > p {
 div#button-field {
     border: 2px solid;
     border-radius: 5px;
-    max-height: 100%;
     overflow-y: auto;
     text-align: center;
 }
