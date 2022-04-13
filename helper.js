@@ -33,6 +33,7 @@ img_src = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode('UT
 function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates, currvals, s) {
     if(fixparams.length === 0) {
         const color = [Math.random(), Math.random(), Math.random()];
+        console.log(coordinates, currvals);
         const yvalues = coordinates
             .filter((x, i) => JSON.stringify(currvals) === JSON.stringify(x
                 .filter((e, i) => i !== input_params[type]
