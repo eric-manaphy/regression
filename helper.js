@@ -33,12 +33,11 @@ img_src = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode('UT
 function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates, currvals, s) {
     if(fixparams.length === 0) {
         const color = [Math.random(), Math.random(), Math.random()];
-        console.log(coordinates, currvals);
         const yvalues = coordinates
             .filter((x) => JSON.stringify(currvals) === JSON.stringify(x
                 .filter((e, i) => i !== input_params[type]
-                    .findIndex(((z) => z === xvar)).slice(0, -1)
-                )
+                    .findIndex(((z) => z === xvar))
+                ).slice(0, -1)
             ))
             .map((x) => x.at(-1));
         return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', 'Color', (${color.join(',')}))\n` +
