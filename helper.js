@@ -40,8 +40,8 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates
                 ).slice(0, -1)
             ))
             .map((x) => x.at(-1));
-        return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', 'Color', (${color.join(',')}))\n` +
-            `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), 'Color', (${color.join(',')}))\n`;
+        return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', c=(${color.join(',')}))\n` +
+            `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), c=(${color.join(',')}))\n`;
     }
     const currparam = fixparams[0];
     for(let i = 0; i < arr[currparam].length; ++i) {
