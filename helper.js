@@ -15,12 +15,15 @@ function generatePlotCode(type, arr, xvar) {
         (acc, curr, i) => ({...acc, [curr]: [...new Set(arr[i])]}),
         {}
     );
-    const coordinates = arr[0].map((c, i) => arr.map(r => r[i]));
+    const coordinates = arr[0]
+        .map((c, i) => arr.map(r => r[i]))
+        .sort(sortCoordinates);
+    console.log(coordinates);
     const fixedparams = params.filter((x) => x !== xvar);
 
     let s = `
 fig, ax = plt.subplots()
-${xvar} = np.array([${fixedarr[xvar].join(',')}])
+${xvar} = np.array([${fixedarr[xvar].sort((a, b) => a - b).join(',')}])
 ${generatePlotCodeSub(type, fixedarr, xvar, params, fixedparams, coordinates, [], '')}
 ax.legend(fontsize='xx-small')
 
@@ -53,4 +56,11 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates
         currvals = [];
     }
     return s;
+}
+
+function sortCoordinates(a, b) {
+    for(let i = 0; i < a.length && i < b.length; ++i) {
+        if(a[i] - b[i] !== 0) return a[i] - b[i];
+    }
+    return 0;
 }
