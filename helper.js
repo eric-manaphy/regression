@@ -22,7 +22,7 @@ function generatePlotCode(type, arr, xvar) {
 fig, ax = plt.subplots()
 ${xvar} = np.array([${fixedarr[xvar].join(',')}])
 ${generatePlotCodeSub(type, fixedarr, xvar, params, fixedparams, coordinates, [], '')}
-ax.legend()
+ax.legend(fontsize='xx-small')
 
 buf = io.BytesIO()
 fig.savefig(buf, format='png')
