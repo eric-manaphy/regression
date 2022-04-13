@@ -22,6 +22,7 @@ function generatePlotCode(type, arr, xvar) {
 fig, ax = plt.subplots()
 ${xvar} = np.array([${fixedarr[xvar].join(',')}])
 ${generatePlotCodeSub(type, fixedarr, xvar, params, fixedparams, coordinates, [], '')}
+ax.legend()
 
 buf = io.BytesIO()
 fig.savefig(buf, format='png')
@@ -35,13 +36,14 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates
         const color = [Math.random(), Math.random(), Math.random()];
         const yvalues = coordinates
             .filter((x) => JSON.stringify(currvals) === JSON.stringify(x
-                .filter((e, i) => i !== input_params[type]
+                .filter((e, i) => i !== origparams
                     .findIndex(((z) => z === xvar))
                 ).slice(0, -1)
             ))
             .map((x) => x.at(-1));
+        const legendlabels = origparams.filter((x) => x !== xvar).map((x, i) => `${x}=${currvals[i]}`)
         return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', c=(${color.join(',')}))\n` +
-            `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), c=(${color.join(',')}))\n`;
+            `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), c=(${color.join(',')}), label='${legendlabels.join(', ')}')\n`;
     }
     const currparam = fixparams[0];
     for(let i = 0; i < arr[currparam].length; ++i) {
