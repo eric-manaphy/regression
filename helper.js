@@ -32,11 +32,12 @@ img_src = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode('UT
 
 function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates, currvals, s) {
     if(fixparams.length === 0) {
+        const color = [Math.random(), Math.random(), Math.random()];
         const yvalues = coordinates
             .filter((x, i) => JSON.stringify(currvals) === JSON.stringify(x.slice(1, -1)))
             .map((x) => x.at(-1));
-        return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o')\n` +
-            `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)))\n`;
+        return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', 'Color', (${color.join(',')}))\n` +
+            `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), 'Color', (${color.join(',')}))\n`;
     }
     const currparam = fixparams[0];
     for(let i = 0; i < arr[currparam].length; ++i) {
