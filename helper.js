@@ -34,7 +34,11 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates
     if(fixparams.length === 0) {
         const color = [Math.random(), Math.random(), Math.random()];
         const yvalues = coordinates
-            .filter((x, i) => JSON.stringify(currvals) === JSON.stringify(x.slice(1, -1)))
+            .filter((x, i) => JSON.stringify(currvals) === JSON.stringify(x
+                .filter((e, i) => i !== input_params[type]
+                    .findIndex(((z) => z === xvar))
+                )
+            ))
             .map((x) => x.at(-1));
         return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', 'Color', (${color.join(',')}))\n` +
             `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), 'Color', (${color.join(',')}))\n`;
