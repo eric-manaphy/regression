@@ -41,7 +41,7 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates
                 ).slice(0, -1)
             ))
             .map((x) => x.at(-1));
-        const legendlabels = origparams.filter((x) => x !== xvar).map((x, i) => `${x}=${currvals[i]}`)
+        const legendlabels = origparams.filter((x) => x !== xvar).map((x, i) => `${x}=${currvals[i]}`);
         return `ax.plot(np.reciprocal(${xvar}), np.reciprocal([${yvalues.join(',')}]), 'o', c=(${color.join(',')}))\n` +
             `ax.plot(np.reciprocal(${xvar}), np.reciprocal(${type}((${origparams.join(',')}), *popt)), c=(${color.join(',')}), label='${legendlabels.join(', ')}')\n`;
     }
