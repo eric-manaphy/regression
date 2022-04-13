@@ -35,9 +35,9 @@ function generatePlotCodeSub(type, arr, xvar, origparams, fixparams, coordinates
         const color = [Math.random(), Math.random(), Math.random()];
         console.log(coordinates, currvals);
         const yvalues = coordinates
-            .filter((x, i) => JSON.stringify(currvals) === JSON.stringify(x
+            .filter((x) => JSON.stringify(currvals) === JSON.stringify(x
                 .filter((e, i) => i !== input_params[type]
-                    .findIndex(((z) => z === xvar))
+                    .findIndex(((z) => z === xvar)).slice(0, -1)
                 )
             ))
             .map((x) => x.at(-1));
